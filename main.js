@@ -8,4 +8,19 @@ function get_username() {
   }
 }
 
-get_username();
+// get_username();
+
+function calculate() {
+  const firstNumber = parseInt(prompt("Enter the first number"));
+  const secondNumber = parseInt(prompt("Enter the second number"));
+  alert(
+    `
+    ${firstNumber} + ${secondNumber} = ${firstNumber + secondNumber}\n
+    ${firstNumber} - ${secondNumber} = ${firstNumber - secondNumber}\n
+    ${firstNumber} * ${secondNumber} = ${firstNumber * secondNumber}\n
+    ${firstNumber} / ${secondNumber} = ${firstNumber / secondNumber}
+    `
+  );
+}
+
+calculate();
