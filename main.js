@@ -10,6 +10,7 @@ function get_username() {
 
 // get_username();
 
+// Homework 3
 function calculate() {
   const firstNumber = parseInt(prompt("Enter the first number"));
   const secondNumber = parseInt(prompt("Enter the second number"));
