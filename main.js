@@ -24,4 +24,28 @@ function calculate() {
   );
 }
 
+// calculate();
+
+// Homework 4
+function calculate() {
+  const operationChoise = prompt("Select an action: add, sub, mult, div");
+  const firstNumber = parseInt(prompt("Enter the first number"));
+  const secondNumber = parseInt(prompt("Enter the second number"));
+
+  switch (operationChoise) {
+    case "add":
+      alert(`${firstNumber} + ${secondNumber} = ${firstNumber + secondNumber}`);
+      break;
+    case "sub":
+      alert(`${firstNumber} - ${secondNumber} = ${firstNumber - secondNumber}`);
+      break;
+    case "mult":
+      alert(`${firstNumber} * ${secondNumber} = ${firstNumber * secondNumber}`);
+      break;
+    case "div":
+      alert(`${firstNumber} / ${secondNumber} = ${firstNumber / secondNumber}`);
+      break;
+  }
+}
+
 calculate();
