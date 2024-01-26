@@ -48,4 +48,49 @@ function calculate() {
   }
 }
 
-calculate();
+// calculate();
+
+// Homework 5
+function homework5() {
+  const birthYear = parseInt(prompt("Tell me a year of your birthday"));
+  const whichCountry = prompt("What country do you live in ?");
+  const userSport = prompt("Enter your favorite sport");
+
+  const userAge =
+    !isNaN(birthYear) && birthYear !== null
+      ? "Your age is " + (2024 - birthYear)
+      : "It's a pity that you didn't want to say your birthday";
+
+  let userPlace;
+  if (["Kyiv", "Washington", "London"].includes(whichCountry)) {
+    userPlace = `You live in the capital of your country - ${whichCountry}`;
+  } else if (whichCountry !== null && whichCountry !== "") {
+    userPlace = `You live in ${whichCountry}`;
+  } else {
+    userPlace = "It's a pity that you didn't want to say where you live in";
+  }
+
+  let userIdol;
+  switch (userSport) {
+    case "box":
+      userIdol = "Do you want to become like Mike Tyson?";
+      break;
+    case "basketball":
+      userIdol = "Do you want to become like Michael Jordan?";
+      break;
+    case "football":
+      userIdol = "Do you want to become like Lionel Messi?";
+      break;
+    default:
+      userIdol = "It's a pity that you didn't want to say your sports idol";
+      break;
+  }
+
+  alert(`
+  ${userAge}
+  ${userPlace}
+  ${userIdol}
+  `);
+}
+
+homework5();
