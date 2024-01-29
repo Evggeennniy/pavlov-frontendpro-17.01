@@ -121,4 +121,4 @@ const num2 = parseFloat(prompt("input number 2"));
 const num3 = parseFloat(prompt("input number 3"));
 
 const result = averageNumber(num1, num2, num3);
-console.log(result);
+alert(`average number is ${result}`);
