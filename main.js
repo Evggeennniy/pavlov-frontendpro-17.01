@@ -94,19 +94,31 @@ function homework5() {
 }
 
 // homework6();
-let numOrStr = prompt("input number or string");
-console.log(numOrStr);
+// let numOrStr = prompt("input number or string");
+// console.log(numOrStr);
 
-switch (true) {
-  case numOrStr === null:
-    console.log("ви скасували");
-    break;
-  case numOrStr.trim() === "":
-    console.log("Empty String");
-    break;
-  case isNaN(+numOrStr):
-    console.log("number is Ba_NaN");
-    break;
-  default:
-    console.log("OK!");
-}
+// switch (true) {
+//   case numOrStr === null:
+//     console.log("ви скасували");
+//     break;
+//   case numOrStr.trim() === "":
+//     console.log("Empty String");
+//     break;
+//   case isNaN(+numOrStr):
+//     console.log("number is Ba_NaN");
+//     break;
+//   default:
+//     console.log("OK!");
+// }
+
+// Homework 7
+const averageNumber = (...args) => {
+  return args.reduce((total, num) => total + num, 0) / args.length;
+}; // Решил сделать более универсальный вариант но не до конца разобрался в методе reduce
+
+const num1 = parseFloat(prompt("input number 1"));
+const num2 = parseFloat(prompt("input number 2"));
+const num3 = parseFloat(prompt("input number 3"));
+
+const result = averageNumber(num1, num2, num3);
+alert(`average number is ${result}`);
