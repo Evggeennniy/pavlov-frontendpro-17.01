@@ -187,3 +187,15 @@ const ismadebyThree = (number) => {
 
 const resultbyTask5 = ismadebyThree(13);
 console.log(resultbyTask5);
+
+// Homework9
+const powCopy = (number, degree) => {
+  if (degree > 1) {
+    return powCopy(number, --degree) * number;
+  } else {
+    return number;
+  }
+};
+
+const result = powCopy(15, 5);
+console.log(result);
