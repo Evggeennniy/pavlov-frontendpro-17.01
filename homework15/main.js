@@ -8,8 +8,8 @@ class People {
 class Apartment {
   residents = new Array();
 
-  addResident(residents) {
-    this.residents.push(residents);
+  addResident(...residents) {
+    this.residents.push(...residents);
   }
 }
 
