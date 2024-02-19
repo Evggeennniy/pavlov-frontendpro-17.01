@@ -14,10 +14,22 @@ array = [
 ];
 
 const averageOfNumbers = (array) => {
-  result = array.reduce(function (accumulator, current) {
-    return typeof current == "number" ? accumulator + current : accumulator;
-  }, 0);
-  return result / array.length;
+  const sumAndCount = array.reduce(
+    function (accumulator, current) {
+      if (typeof current === "number") {
+        accumulator.sum += current;
+        accumulator.count++;
+      }
+      return accumulator;
+    },
+    { sum: 0, count: 0 }
+  );
+
+  if (sumAndCount.count === 0) {
+    return 0; // Если нет чисел, возвращаем 0, чтобы избежать деления на 0.
+  }
+
+  return sumAndCount.sum / sumAndCount.count;
 };
 
 res = averageOfNumbers(array);
