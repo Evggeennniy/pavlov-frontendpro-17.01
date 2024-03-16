@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    <a
+      href="https://evggeennniy.github.io/pavlov-frontendpro-17.01/"
+      class="back-button"
+      >BACK</a
+    >
+    <h1 class="header">IT'S HOMEWORK #27</h1>
+    <form id="registrationForm">
+      <label for="firstName">Ім'я:</label>
+      <input type="text" id="firstName" name="firstName" required />
+
+      <label for="lastName">Прізвище:</label>
+      <input type="text" id="lastName" name="lastName" required />
+
+      <label for="dob">Дата народження:</label>
+      <input type="text" id="dob" name="dob" required />
+
+      <label>Стать:</label>
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">Чоловіча</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Жіноча</label>
+
+      <label for="city">Місто:</label>
+      <select id="city" name="city" required>
+        <option value="">Оберіть місто</option>
+        <option value="kyiv">Київ</option>
+        <option value="lviv">Львів</option>
+        <option value="kharkiv">Харків</option>
+        <option value="odesa">Одеса</option>
+      </select>
+
+      <label for="address">Адреса:</label>
+      <textarea id="address" name="address" rows="4" required></textarea>
+
+      <label>Мови, якими володієте:</label>
+      <input
+        type="checkbox"
+        id="language1"
+        name="languages"
+        value="ukrainian"
+      />
+      <label for="language1">Українська</label>
+      <input type="checkbox" id="language2" name="languages" value="english" />
+      <label for="language2">Англійська</label>
+      <input type="checkbox" id="language3" name="languages" value="russian" />
+      <label for="language3">Російська</label>
+
+      <button id="saveButton">Зберегти</button>
+    </form>
+
+    <div id="userData"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
