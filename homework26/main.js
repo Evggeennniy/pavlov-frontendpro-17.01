@@ -127,4 +127,3 @@ productsList.addEventListener("click", (event) => {
   const buyButton = document.querySelector(".product-detail__buy");
   buyButton.addEventListener("click", productWasBought);
 });
-document.ele;
