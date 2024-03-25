@@ -61,25 +61,32 @@ let orderForm = undefined;
 class CustomLocalStorage {
   constructor(key) {
     this.key = key;
-    this.data = [];
-  }
+    this.history = [];
 
-  addItem(item) {
-    this.data.push(item);
-    localStorage.setItem(this.key, JSON.stringify(this.data));
-  }
-
-  removeItem(index) {
-    this.data.splice(index, 1);
-    localStorage.setItem(this.key, JSON.stringify(this.data));
+    const localHistory = JSON.parse(localStorage.getItem(key));
+    if (localHistory) this.history = localHistory;
   }
 
   getData() {
-    return this.data;
+    return this.history;
+  }
+
+  saveInLocal() {
+    localStorage.setItem(this.key, JSON.stringify(this.history));
+  }
+
+  addItem(item) {
+    this.history.push(item);
+    this.saveInLocal();
+  }
+
+  removeItem(index) {
+    this.history.splice(index, 1);
+    this.saveInLocal();
   }
 
   isEmpty() {
-    return this.data.length === 0;
+    return this.history.length == 0;
   }
 }
 
@@ -182,16 +189,16 @@ const createOrder = (formObj) => {
 };
 
 const isValid = (formObj) => {
-  const requiredFields = formObj.querySelectorAll(
-    "input[required], select[required], textarea[required]"
-  );
+  // const requiredFields = formObj.querySelectorAll(
+  //   "input[required], select[required], textarea[required]"
+  // );
 
-  for (let field of requiredFields) {
-    if (!field.value) {
-      field.focus();
-      return false;
-    }
-  }
+  // for (let field of requiredFields) {
+  //   if (!field.value) {
+  //     field.focus();
+  //     return false;
+  //   }
+  // }
   return true;
 };
 
@@ -315,26 +322,20 @@ productsList.addEventListener("click", (event) => {
   buyButton.addEventListener("click", createForm);
 });
 
-showOrdersButton.addEventListener("click", (event) => {
+showOrdersButton.addEventListener("click", () => {
   if (ordersInStorage.isEmpty()) {
     alert("У вас нет заказов");
     return;
   }
 
-  let ordersHistoryObj = categoriesList.querySelector(".orders-history");
-  if (!ordersHistoryObj) {
-    ordersHistoryObj = document.createElement("ul");
-    ordersHistoryObj.classList.add("orders-history");
-  } else {
-    ordersHistoryObj.innerHTML = "";
-  }
-
-  allOrders = ordersInStorage.getData();
-  allOrders.forEach((currentOrder, itemIndex) => {
-    const orderObj = document.createElement("li");
-    orderObj.classList.add("orders-history__order");
-    orderObj.setAttribute("order-id", itemIndex);
-    orderObj.innerHTML = `
+  if (categoriesList.getAttribute("condition") == "categories") {
+    allOrders = ordersInStorage.getData();
+    categoriesList.innerHTML = "";
+    allOrders.forEach((currentOrder, itemIndex) => {
+      const orderObj = document.createElement("li");
+      orderObj.classList.add("orders-history__order");
+      orderObj.setAttribute("order-id", itemIndex);
+      orderObj.innerHTML = `
       <strong>Заказ: #${itemIndex + 1}</strong>
       <h3 class="orders-history__order-header">Дата: ${currentOrder.date}</h3>
       <p class="orders-history__order-price">Цена: ${
@@ -357,9 +358,19 @@ showOrdersButton.addEventListener("click", (event) => {
       </div>
       <button class="orders-history__order-button-remove">Удалить</button>
     `;
-    ordersHistoryObj.append(orderObj);
-  });
-
-  categoriesList.innerHTML = "";
-  categoriesList.append(ordersHistoryObj);
+      categoriesList.append(orderObj);
+    });
+    categoriesList.setAttribute("condition", "orders");
+    showOrdersButton.textContent = "Категории";
+  } else {
+    categoriesList.innerHTML = `
+    <li class="category">
+      <a class="category__link" category="phones">телефоны</a>
+    </li>
+    <li class="category">
+      <a class="category__link" category="laptops">ноутбуки</a>
+    </li>`;
+    categoriesList.setAttribute("condition", "categories");
+    showOrdersButton.textContent = "Заказы";
+  }
 });
