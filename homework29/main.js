@@ -323,12 +323,12 @@ productsList.addEventListener("click", (event) => {
 });
 
 showOrdersButton.addEventListener("click", () => {
-  if (ordersInStorage.isEmpty()) {
-    alert("У вас нет заказов");
-    return;
-  }
-
   if (categoriesList.getAttribute("condition") == "categories") {
+    if (ordersInStorage.isEmpty()) {
+      alert("У вас нет заказов");
+      return;
+    }
+
     allOrders = ordersInStorage.getData();
     categoriesList.innerHTML = "";
     allOrders.forEach((currentOrder, itemIndex) => {
