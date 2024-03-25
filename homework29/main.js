@@ -189,16 +189,16 @@ const createOrder = (formObj) => {
 };
 
 const isValid = (formObj) => {
-  // const requiredFields = formObj.querySelectorAll(
-  //   "input[required], select[required], textarea[required]"
-  // );
+  const requiredFields = formObj.querySelectorAll(
+    "input[required], select[required], textarea[required]"
+  );
 
-  // for (let field of requiredFields) {
-  //   if (!field.value) {
-  //     field.focus();
-  //     return false;
-  //   }
-  // }
+  for (let field of requiredFields) {
+    if (!field.value) {
+      field.focus();
+      return false;
+    }
+  }
   return true;
 };
 
