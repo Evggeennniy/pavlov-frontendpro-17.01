@@ -18,8 +18,18 @@ document.getElementById("fetchPost").addEventListener("click", function () {
       postElement.innerHTML = `
                 <h2>${post.title}</h2>
                 <p>${post.body}</p>
-                <button onclick="fetchComments(${post.id})">Load Comments</button>
-            `;
+                <button class="load-comments-button" >Load Comments</button>
+            `; //
+
+      postElement.addEventListener("click", (event) => {
+        const pressedButton = event.target;
+
+        if (pressedButton.closest(".load-comments-button")) {
+          fetchComments(post.id);
+        }
+        // TODO *on button class
+      });
+
       const postContainer = document.getElementById("post");
       postContainer.innerHTML = "";
       postContainer.appendChild(postElement);
