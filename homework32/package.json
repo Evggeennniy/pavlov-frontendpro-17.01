@@ -1,0 +1,25 @@
+{
+  "name": "homework32",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "expressmon": "npx nodemon app.js",
+    "webgulp": "npx gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "gulp": "^5.0.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.1.0",
+    "nodemon": "^3.1.0",
+    "sass": "^1.75.0",
+    "webpack-stream": "^7.0.0"
+  }
+}
