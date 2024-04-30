@@ -5,7 +5,7 @@ const webpack = require("webpack-stream");
 const browserSync = require("browser-sync").create();
 
 const styles = () => {
-  return src("public/scss/main.scss")
+  return src("src/scss/main.scss")
     .pipe(sass({ outputStyle: "compressed" }))
     .pipe(concat("main.min.css"))
     .pipe(dest("public/css"))
@@ -13,7 +13,7 @@ const styles = () => {
 };
 
 const scripts = () => {
-  return src("public/js/main.js")
+  return src("src/js/main.js")
     .pipe(
       webpack({
         devtool: "source-map",
@@ -28,8 +28,8 @@ const scripts = () => {
 };
 
 const watching = () => {
-  watch(["public/scss/main.scss"]).on("change", browserSync.reload);
-  watch(["public/js/main.js"]).on("change", browserSync.reload);
+  watch(["src/scss/main.scss"]).on("change", browserSync.reload);
+  watch(["src/js/main.js"]).on("change", browserSync.reload);
   watch("public/*.html").on("change", browserSync.reload);
 };
 
