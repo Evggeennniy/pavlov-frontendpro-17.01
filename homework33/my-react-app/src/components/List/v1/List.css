@@ -1,0 +1,14 @@
+.nav_list-row-right,
+.nav_list-col-default {
+  display: flex;
+  gap: 30px;
+  padding: 0 30px;
+}
+
+.nav_list-row-right {
+  justify-content: end;
+}
+
+.nav_list-col-default {
+  flex-direction: column;
+}
